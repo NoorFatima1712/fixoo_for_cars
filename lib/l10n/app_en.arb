@@ -1,0 +1,6 @@
+{
+  "@@locale": "en",
+  "appTitle": "Fixoo",
+  "greeting": "Hello",
+  "testMessage": "Localisation is working"
+}
