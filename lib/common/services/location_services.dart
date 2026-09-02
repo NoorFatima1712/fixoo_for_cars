@@ -14,7 +14,14 @@ class LocationServices {
         permission == LocationPermission.deniedForever) {
       return null;
     }
-
-    return Geolocator.getCurrentPosition();
+    try {
+      return await Geolocator.getCurrentPosition(
+        locationSettings: const LocationSettings(
+          timeLimit: Duration(seconds: 10),
+        ),
+      );
+    } catch (e) {
+      return null;
+    }
   }
 }
