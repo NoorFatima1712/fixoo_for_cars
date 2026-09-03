@@ -2,5 +2,14 @@
   "@@locale": "en",
   "appTitle": "Fixoo",
   "greeting": "Hello",
-  "testMessage": "Localisation is working"
+  "testMessage": "Localisation is working",
+  "locationFailed": "Could not get your location",
+  "distanceKm": "{distance} km",
+  "@distanceKm": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  }
 }

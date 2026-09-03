@@ -2,5 +2,7 @@
   "@@locale": "ur",
   "appTitle": "Fixoo",
   "greeting": "ہیلو",
-  "testMessage": "لوکلائزیشن کام کر رہی ہے"
+  "testMessage": "لوکلائزیشن کام کر رہی ہے",
+  "locationFailed": "آپ کی لوکیشن حاصل نہیں ہو سکی",
+  "distanceKm": "{distance} کلومیٹر"
 }

@@ -12,6 +12,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
 
+  void _toggleLanguage() {
+    setState(() {
+      _locale = _locale?.languageCode == 'ur'
+          ? const Locale('en')
+          : const Locale('ur');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +29,7 @@ class _MyAppState extends State<MyApp> {
 
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: ShopListScreen(),
+      home: ShopListScreen(onToggleLanguage: _toggleLanguage),
     );
   }
 }

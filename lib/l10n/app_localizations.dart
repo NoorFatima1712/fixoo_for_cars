@@ -115,6 +115,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Localisation is working'**
   String get testMessage;
+
+  /// No description provided for @locationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not get your location'**
+  String get locationFailed;
+
+  /// No description provided for @distanceKm.
+  ///
+  /// In en, this message translates to:
+  /// **'{distance} km'**
+  String distanceKm(String distance);
 }
 
 class _AppLocalizationsDelegate

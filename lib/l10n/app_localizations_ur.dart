@@ -16,4 +16,12 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get testMessage => 'لوکلائزیشن کام کر رہی ہے';
+
+  @override
+  String get locationFailed => 'آپ کی لوکیشن حاصل نہیں ہو سکی';
+
+  @override
+  String distanceKm(String distance) {
+    return '$distance کلومیٹر';
+  }
 }

@@ -16,4 +16,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get testMessage => 'Localisation is working';
+
+  @override
+  String get locationFailed => 'Could not get your location';
+
+  @override
+  String distanceKm(String distance) {
+    return '$distance km';
+  }
 }

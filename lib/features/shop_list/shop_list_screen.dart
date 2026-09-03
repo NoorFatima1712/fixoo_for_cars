@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/models/shop.dart';
+import '../../l10n/app_localizations.dart';
 import '../../common/services/database_services.dart';
 import '../../common/services/location_services.dart';
 import 'shop_list_service.dart';
 
 class ShopListScreen extends StatefulWidget {
-  const ShopListScreen({super.key});
+  const ShopListScreen({super.key, required this.onToggleLanguage});
+
+  final VoidCallback onToggleLanguage;
 
   @override
   State<ShopListScreen> createState() => _ShopListScreenState();
@@ -49,12 +52,21 @@ class _ShopListScreenState extends State<ShopListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final text = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('Fixoo')),
+      appBar: AppBar(
+        title: Text(text.appTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.language),
+            onPressed: widget.onToggleLanguage,
+          ),
+        ],
+      ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _locationFailed
-          ? const Center(child: Text('Could not get your location'))
+          ? Center(child: Text(text.locationFailed))
           : ListView.builder(
               itemCount: _shops.length,
               itemBuilder: (context, index) {
@@ -62,7 +74,9 @@ class _ShopListScreenState extends State<ShopListScreen> {
                 return ListTile(
                   title: Text(shop.name),
                   subtitle: Text(
-                    '${(shop.distanceInMeters / 1000).toStringAsFixed(1)} km',
+                    text.distanceKm(
+                      (shop.distanceInMeters / 1000).toStringAsFixed(1),
+                    ),
                   ),
                   trailing: IconButton(
                     icon: const Icon(Icons.phone),
