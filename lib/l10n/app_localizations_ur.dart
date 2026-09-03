@@ -21,6 +21,12 @@ class AppLocalizationsUr extends AppLocalizations {
   String get locationFailed => 'آپ کی لوکیشن حاصل نہیں ہو سکی';
 
   @override
+  String get emergencyRescue => 'ریسکیو 1122';
+
+  @override
+  String get emergencyMotorway => 'موٹروے پولیس 130';
+
+  @override
   String distanceKm(String distance) {
     return '$distance کلومیٹر';
   }

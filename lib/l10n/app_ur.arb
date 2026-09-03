@@ -4,5 +4,7 @@
   "greeting": "ہیلو",
   "testMessage": "لوکلائزیشن کام کر رہی ہے",
   "locationFailed": "آپ کی لوکیشن حاصل نہیں ہو سکی",
+  "emergencyRescue": "ریسکیو 1122",
+  "emergencyMotorway": "موٹروے پولیس 130",
   "distanceKm": "{distance} کلومیٹر"
 }

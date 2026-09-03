@@ -4,6 +4,8 @@
   "greeting": "Hello",
   "testMessage": "Localisation is working",
   "locationFailed": "Could not get your location",
+  "emergencyRescue": "Rescue 1122",
+  "emergencyMotorway": "Motorway Police 130",
   "distanceKm": "{distance} km",
   "@distanceKm": {
     "placeholders": {

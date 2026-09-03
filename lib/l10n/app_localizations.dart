@@ -122,6 +122,18 @@ abstract class AppLocalizations {
   /// **'Could not get your location'**
   String get locationFailed;
 
+  /// No description provided for @emergencyRescue.
+  ///
+  /// In en, this message translates to:
+  /// **'Rescue 1122'**
+  String get emergencyRescue;
+
+  /// No description provided for @emergencyMotorway.
+  ///
+  /// In en, this message translates to:
+  /// **'Motorway Police 130'**
+  String get emergencyMotorway;
+
   /// No description provided for @distanceKm.
   ///
   /// In en, this message translates to:

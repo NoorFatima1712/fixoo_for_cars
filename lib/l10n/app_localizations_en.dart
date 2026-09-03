@@ -21,6 +21,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get locationFailed => 'Could not get your location';
 
   @override
+  String get emergencyRescue => 'Rescue 1122';
+
+  @override
+  String get emergencyMotorway => 'Motorway Police 130';
+
+  @override
   String distanceKm(String distance) {
     return '$distance km';
   }

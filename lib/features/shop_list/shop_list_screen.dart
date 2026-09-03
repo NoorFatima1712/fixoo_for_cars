@@ -45,9 +45,35 @@ class _ShopListScreenState extends State<ShopListScreen> {
     });
   }
 
-  Future<void> _callShop(String phone) async {
+  Future<void> _dialNumber(String phone) async {
     final uri = Uri(scheme: 'tel', path: phone);
     await launchUrl(uri);
+  }
+
+  Widget _buildEmergencyBar(AppLocalizations text) {
+    return Container(
+      color: Colors.red.shade50,
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        children: [
+          Expanded(
+            child: OutlinedButton.icon(
+              icon: const Icon(Icons.emergency),
+              label: Text(text.emergencyRescue),
+              onPressed: () => _dialNumber('1122'),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: OutlinedButton.icon(
+              icon: const Icon(Icons.local_police),
+              label: Text(text.emergencyMotorway),
+              onPressed: () => _dialNumber('130'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -63,28 +89,35 @@ class _ShopListScreenState extends State<ShopListScreen> {
           ),
         ],
       ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _locationFailed
-          ? Center(child: Text(text.locationFailed))
-          : ListView.builder(
-              itemCount: _shops.length,
-              itemBuilder: (context, index) {
-                final shop = _shops[index];
-                return ListTile(
-                  title: Text(shop.name),
-                  subtitle: Text(
-                    text.distanceKm(
-                      (shop.distanceInMeters / 1000).toStringAsFixed(1),
-                    ),
+      body: Column(
+        children: [
+          _buildEmergencyBar(text),
+          Expanded(
+            child: _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _locationFailed
+                ? Center(child: Text(text.locationFailed))
+                : ListView.builder(
+                    itemCount: _shops.length,
+                    itemBuilder: (context, index) {
+                      final shop = _shops[index];
+                      return ListTile(
+                        title: Text(shop.name),
+                        subtitle: Text(
+                          text.distanceKm(
+                            (shop.distanceInMeters / 1000).toStringAsFixed(1),
+                          ),
+                        ),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.phone),
+                          onPressed: () => _dialNumber(shop.phone),
+                        ),
+                      );
+                    },
                   ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.phone),
-                    onPressed: () => _callShop(shop.phone),
-                  ),
-                );
-              },
-            ),
+          ),
+        ],
+      ),
     );
   }
 }
