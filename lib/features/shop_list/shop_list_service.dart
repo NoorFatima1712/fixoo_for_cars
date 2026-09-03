@@ -15,11 +15,23 @@ List<Shop> getNearbyShops(
     );
     return Shop.fromMap(map, distance);
   }).toList();
-  final nearby = shopsWithDistance
-      .where((shop) => shop.distanceInMeters <= 1500)
+  var radius = 1500.0;
+  var nearby = shopsWithDistance
+      .where((shop) => shop.distanceInMeters <= radius)
       .toList();
 
+  while (nearby.length < 5 && radius < 50000) {
+    radius += 1500;
+    nearby = shopsWithDistance
+        .where((shop) => shop.distanceInMeters <= radius)
+        .toList();
+  }
+
   nearby.sort((a, b) => a.distanceInMeters.compareTo(b.distanceInMeters));
+
+  if (nearby.length > 30) {
+    nearby = nearby.sublist(0, 30);
+  }
 
   return nearby;
 }
