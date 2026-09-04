@@ -6,6 +6,7 @@
   "locationFailed": "Could not get your location",
   "emergencyRescue": "Rescue 1122",
   "emergencyMotorway": "Motorway Police 130",
+  "showMoreShops": "Show more shops",
   "distanceKm": "{distance} km",
   "@distanceKm": {
     "placeholders": {

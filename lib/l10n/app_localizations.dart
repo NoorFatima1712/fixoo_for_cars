@@ -134,6 +134,12 @@ abstract class AppLocalizations {
   /// **'Motorway Police 130'**
   String get emergencyMotorway;
 
+  /// No description provided for @showMoreShops.
+  ///
+  /// In en, this message translates to:
+  /// **'Show more shops'**
+  String get showMoreShops;
+
   /// No description provided for @distanceKm.
   ///
   /// In en, this message translates to:

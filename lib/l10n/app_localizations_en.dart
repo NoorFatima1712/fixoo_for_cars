@@ -27,6 +27,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emergencyMotorway => 'Motorway Police 130';
 
   @override
+  String get showMoreShops => 'Show more shops';
+
+  @override
   String distanceKm(String distance) {
     return '$distance km';
   }

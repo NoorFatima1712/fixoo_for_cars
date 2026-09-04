@@ -1,4 +1,4 @@
-import 'package:fixoo_for_cars/features/shop_list/shop_list_screen.dart';
+import 'package:fixoo_for_cars/features/booking/presentation/browse_shops_screen.dart';
 import 'package:fixoo_for_cars/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 

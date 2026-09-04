@@ -1,11 +1,12 @@
 import 'package:geolocator/geolocator.dart';
 
-import '../../common/models/shop.dart';
+import '../../../core/models/shop.dart';
 
 List<Shop> getNearbyShops(
   Position userPosition,
-  List<Map<String, dynamic>> allShops,
-) {
+  List<Map<String, dynamic>> allShops, {
+  int minResults = 5,
+}) {
   final shopsWithDistance = allShops.map((map) {
     final distance = Geolocator.distanceBetween(
       userPosition.latitude,
@@ -20,7 +21,7 @@ List<Shop> getNearbyShops(
       .where((shop) => shop.distanceInMeters <= radius)
       .toList();
 
-  while (nearby.length < 5 && radius < 50000) {
+  while (nearby.length < minResults && radius < 50000) {
     radius += 1500;
     nearby = shopsWithDistance
         .where((shop) => shop.distanceInMeters <= radius)

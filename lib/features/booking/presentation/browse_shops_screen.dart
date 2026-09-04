@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../common/models/shop.dart';
-import '../../l10n/app_localizations.dart';
-import '../../common/services/database_services.dart';
-import '../../common/services/location_services.dart';
-import 'shop_list_service.dart';
+import '../../../core/models/shop.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../../core/services/database_services.dart';
+import '../../../core/services/location_services.dart';
+import '../data/shop_list_service.dart';
 
 class ShopListScreen extends StatefulWidget {
   const ShopListScreen({super.key, required this.onToggleLanguage});
@@ -20,6 +20,7 @@ class _ShopListScreenState extends State<ShopListScreen> {
   bool _isLoading = true;
   bool _locationFailed = false;
   List<Shop> _shops = [];
+  int _minResults = 5;
 
   @override
   void initState() {
@@ -40,9 +41,16 @@ class _ShopListScreenState extends State<ShopListScreen> {
     }
 
     setState(() {
-      _shops = getNearbyShops(position, shopMaps);
+      _shops = getNearbyShops(position, shopMaps, minResults: _minResults);
       _isLoading = false;
     });
+  }
+
+  void _showMoreShops() {
+    setState(() {
+      _minResults += 10;
+    });
+    _loadShops();
   }
 
   Future<void> _dialNumber(String phone) async {
@@ -98,8 +106,17 @@ class _ShopListScreenState extends State<ShopListScreen> {
                 : _locationFailed
                 ? Center(child: Text(text.locationFailed))
                 : ListView.builder(
-                    itemCount: _shops.length,
+                    itemCount: _shops.length + 1,
                     itemBuilder: (context, index) {
+                      if (index == _shops.length) {
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: OutlinedButton(
+                            onPressed: _showMoreShops,
+                            child: Text(text.showMoreShops),
+                          ),
+                        );
+                      }
                       final shop = _shops[index];
                       return ListTile(
                         title: Text(shop.name),
